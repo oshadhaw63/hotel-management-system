@@ -1,42 +1,96 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Reset some defaults */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #935757;
+  
+}
+
+/* --- NAVBAR STYLES --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  padding: 20px 50px;
+  background-color: #1c4027;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo h2 {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 10px;
+}
+
+.nav-links li {
+  cursor: pointer;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.book-btn {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 0; /* Sharp corners like the original */
+}
+
+/* --- HERO SECTION STYLES --- */
+.hero-section {
+  height: 80vh; /* Takes up 80% of the screen height */
+  background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&auto=format&fit=crop&q=80');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;    /* Center vertically */
   text-align: center;
+  color: rgb(253, 253, 253);
+  position: relative;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Dark overlay so text is readable */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.hero-content {
+  position: relative; /* Places text above the overlay */
+  z-index: 1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.hero-content h1 {
+  font-size: 60px;
+  margin-bottom: 10px;
+  letter-spacing: 5px;
+  font-weight: 300;
 }
 
-.card {
-  padding: 2em;
+.explore-btn {
+  margin-top: 20px;
+  padding: 15px 40px;
+  background: transparent;
+  border: 2px solid white;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.read-the-docs {
-  color: #888;
+.explore-btn:hover {
+  background: white;
+  color: black;
 }

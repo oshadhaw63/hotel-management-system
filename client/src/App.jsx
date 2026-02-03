@@ -1,6 +1,7 @@
 import {useState,useEffect} from 'react';
 import Navbar from './Navbar';
-
+import Hero  from './Hero';
+import './App.css';
 
 function App(){
   const [rooms,setRooms]= useState([]);
@@ -21,6 +22,7 @@ function App(){
   return (
     <div>
       <Navbar/>
+      <Hero/>
       <h1>Hotel Booking Site</h1>
       <div className="room-list">
         {rooms.map((room) => (
