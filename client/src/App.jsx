@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {useState,useEffect} from 'react';
+import Navbar from './Navbar';
 
-function App() {
-  const [count, setCount] = useState(0)
+
+function App(){
+  const [rooms,setRooms]= useState([]);
+
+  
+  useEffect(()=>{
+    fetch('http://localhost:5000/rooms')
+    .then(res=> res.json())
+    .then(data=>{
+      console.log(data);
+      setRooms(data);
+    })
+    .catch(err=> console.error("Erorr fetching: ",err));
+
+
+  },[])
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div>
+      <Navbar/>
+      <h1>Hotel Booking Site</h1>
+      <div className="room-list">
+        {rooms.map((room) => (
+          <div key={room.id} style={{ border: '1px solid #ccc', margin: '10px', padding: '10px' }}>
+            <img src={room.image} alt={room.name} />
+            <h2>{room.name}</h2>
+            <p>Price: ${room.price}</p>
+            
+          </div>
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+
+    </div>
   )
 }
 
-export default App
+export default App;
